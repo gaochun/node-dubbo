@@ -97,6 +97,9 @@ class Request extends RequestBase {
 
     socket.on('close', err => {
       if (err) {
+        if (err === true) {
+          err = {};
+        }
         err.code = SOCKET_CLOSE_ERROR
         return this._reject(err)
       }
